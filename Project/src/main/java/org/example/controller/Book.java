@@ -1,11 +1,13 @@
 package org.example.controller;
 
+import lombok.Data;
 import org.springframework.data.repository.CrudRepository;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Data
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

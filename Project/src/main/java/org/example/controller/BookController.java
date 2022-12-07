@@ -13,11 +13,11 @@ public class BookController {
     private BookRepository bookRepository;
 
     @GetMapping
-    public Iterable findAll() {
+    public Iterable<Book> findAll() {
         return bookRepository.findAll();
     }
     @GetMapping("/title/{bookTitle}")
-    public List findByTitle(@PathVariable String bookTitle) {
+    public List<Book> findByTitle(@PathVariable String bookTitle) {
         return bookRepository.findByTitle(bookTitle);
     }
     @GetMapping("/{id}")
@@ -38,7 +38,7 @@ public class BookController {
     }
     @PutMapping("/{id}")
     public Book updateBook(@RequestBody Book book, @PathVariable Long id) {
-        if (book.getId != id) {
+        if (book.getId() != id) {
             throw new BookIdMismatchException();
         }
         bookRepository.findById(id)
